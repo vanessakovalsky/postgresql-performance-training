@@ -1,16 +1,16 @@
-version: '3.1'
+version: '3.7'
 
 services:
-
   db:
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example
-    volumes:
+    volumes:      
       - ./01-pagila-schema.sql:/docker-entrypoint-initdb.d/01-pagila-schema.sql
       - ./02-pagila-data.sql:/docker-entrypoint-initdb.d/02-pagila-data.sql
       - ./my-postgres.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
   adminer:
     image: adminer
     restart: always
