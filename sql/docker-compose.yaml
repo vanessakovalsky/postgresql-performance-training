@@ -11,6 +11,8 @@ services:
       - ./02-pagila-data.sql:/docker-entrypoint-initdb.d/02-pagila-data.sql
       - ./my-postgres.conf:/etc/postgresql/postgresql.conf
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    ports: 
+      - 5432:5432
   adminer:
     image: adminer
     restart: always
